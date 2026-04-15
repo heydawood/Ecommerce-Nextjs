@@ -3,11 +3,12 @@ import { ShoppingCart } from "lucide-react";
 //import Logo from  '../../../assets/logo.webp'
 import Link from "next/link";
 import file from '@/public/file.svg'
+import { useAppSelector } from "@/app/hooks/hooks";
 
 
 export function Navbar() {
 
-  //const cartItems = useAppSelector(state=>state.cart.items)
+  const cartItems = useAppSelector(state=>state.cart.items)
 
 
   return (
@@ -52,11 +53,11 @@ export function Navbar() {
               className="relative hover:text-[#ffae00] transition-colors"
             >
               <ShoppingCart size={22} />
-               {/* {cartItems.length > 0 && (
+                {cartItems.length > 0 && (
                 <span className="absolute -top-3 -right-3 bg-[#ffae00] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   {cartItems.length} 
                 </span>
-              )} */}
+              )}
             </Link>
           </div>
 

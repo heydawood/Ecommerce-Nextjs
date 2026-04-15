@@ -1,8 +1,66 @@
+
+// import axios from 'axios';
+// import { TOKEN_KEY } from '../Utils/Constants';
+// import { attachInterceptor } from './InterceptorManager';
+
+// const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
+// const api = axios.create({
+//   baseURL: BASE_URL,
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+// });
+
+// // Request Interceptor
+// api.interceptors.request.use(
+//   (config) => {
+//     const token = localStorage.getItem(TOKEN_KEY);
+//     if (token) {
+//       config.headers.Authorization = `Bearer ${token}`;
+//     }
+//     return config;
+//   },
+//   (error) => {
+//     // Keep full error object
+//     return Promise.reject(error?.response?.data || error);
+//   },
+// );
+
+// // Response Interceptor
+// api.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     const status = error?.response?.status;
+//     const data = error?.response?.data;
+//     const systemErrorCode = error?.response?.data?.systemErrorCode;
+
+//     if (error?.response?.status === 401) {
+//       console.error('Token expired or unauthorized');
+//     }
+
+//     const clonedData = { ...data };
+
+//     if (Array.isArray(clonedData.message)) {
+//       clonedData.message = clonedData.message[0];
+//     }
+
+//     return Promise.reject(clonedData);
+//   },
+// );
+
+// // Attach dynamic interceptor logic
+// export const setupInterceptor = (dispatch: any, navigate: any) => {
+//   attachInterceptor(dispatch, navigate);
+// };
+
+// export default api;
+
 import axios from 'axios';
 import { TOKEN_KEY } from '../Utils/Constants';
 import { attachInterceptor } from './InterceptorManager';
 
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -14,37 +72,47 @@ const api = axios.create({
 // Request Interceptor
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem(TOKEN_KEY);
+    const token = typeof window !== 'undefined' ? localStorage.getItem(TOKEN_KEY) : null;
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
   (error) => {
-    // Keep full error object
-    return Promise.reject(error?.response?.data || error);
+    return Promise.reject(error);
   },
 );
 
 // Response Interceptor
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    // On success, return the response
+    return response;
+  },
   (error) => {
+    // Only handle errors
+    console.error('API Error Details:', {
+      status: error?.response?.status,
+      statusText: error?.response?.statusText,
+      data: error?.response?.data,
+      message: error?.message,
+      url: error?.config?.url,
+    });
+
     const status = error?.response?.status;
     const data = error?.response?.data;
-    const systemErrorCode = error?.response?.data?.systemErrorCode;
 
-    if (error?.response?.status === 401) {
+    if (status === 401) {
       console.error('Token expired or unauthorized');
     }
 
-    const clonedData = { ...data };
-
-    if (Array.isArray(clonedData.message)) {
-      clonedData.message = clonedData.message[0];
-    }
-
-    return Promise.reject(clonedData);
+    // Return error with proper structure
+    return Promise.reject({
+      status,
+      data,
+      message: data?.message || error?.message || 'An error occurred',
+      systemErrorCode: data?.systemErrorCode,
+    });
   },
 );
 

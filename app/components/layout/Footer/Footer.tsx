@@ -69,14 +69,14 @@ const Footer = () => {
               Subscribe to get updates on new collections.
             </p>
 
-            <div className="flex border">
+            <div className="flex ">
               <input
                 type="email"
                 placeholder="Your email"
-                className="flex-1 bg-white text-gray-500 px-3 py-2 outline-none text-sm"
+                className="rounded-[12px] border-2 border-gray-500 hover:border-[#ff9900] shadow-none focus:border-[#ffae00] focus:outline-none flex-1 bg-white text-gray-500 px-3 outline-none py-2 text-sm"
               />
             </div>
-              <Button className="bg-[#ffae00] text-white px-4 text-sm mt-2 hover:bg-gray-800 transition">
+              <Button className="bg-[#ffae00] text-white px-4 text-sm mt-2 hover:bg-[#ff9900] transition">
                 Subscribe
               </Button>
           </div>

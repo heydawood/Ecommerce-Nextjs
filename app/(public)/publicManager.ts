@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { getProducts } from '../services/Products/Products';
 
-export const useUserManager = () => {
+export const usePublicManager = () => {
   const queryClient = useQueryClient();
 
   // GET ALL Products
@@ -14,8 +14,6 @@ export const useUserManager = () => {
     });
 
   //
-
-
 
   return {
     // queries
