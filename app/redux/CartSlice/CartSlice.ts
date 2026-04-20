@@ -32,7 +32,7 @@ const cartSlice = createSlice({
           quantity: 1,
         });
       }
-      console.log("Cart State:", state);
+      console.log("Added to Cart:", state.items);
     },
 
     removeFromCart: (state, action: PayloadAction<string>) => {

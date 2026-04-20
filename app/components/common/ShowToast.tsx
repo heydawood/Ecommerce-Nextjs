@@ -1,4 +1,4 @@
-// utils/toast.ts
+
 import { toast as sonnerToast } from 'sonner';
 
 const getMessage = (msg: any): string => {
@@ -38,4 +38,3 @@ export const customToast = {
       style: { background: '#dbeafe', color: '#1e40af', border: 'none' },
     }),
 };
-

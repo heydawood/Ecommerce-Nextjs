@@ -6,6 +6,7 @@ import { PageProvider } from "./Providers/PageProvider";
 import ReactQueryProvider from "./Providers/ReactQueryProvider";
 import { Provider } from "react-redux";
 import { store } from "./redux/Store";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,8 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
       <body className="min-h-full flex flex-col">
 
          <PageProvider>
+
+          <Toaster position="top-center" />
      
           <ReactQueryProvider>
           {children}

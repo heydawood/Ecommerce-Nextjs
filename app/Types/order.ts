@@ -6,6 +6,6 @@ export interface Order {
   id?: string;
   items: Product[];
   totalAmount: number;
-  status: OrderStatus;
-  createdAt: string;
+  status?: OrderStatus;
+  createdAt?: string;
 }

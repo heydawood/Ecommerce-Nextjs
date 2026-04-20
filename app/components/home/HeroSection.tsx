@@ -66,7 +66,7 @@ const HeroSection = () => {
 
                     <div className="mt-10">
                         <Link
-                            href="/shop"
+                            href="#shop"
                             className="inline-block border rounded-sm bg-[#ffae00] text-white px-8 py-3 text-sm font-medium hover:bg-[#ff9900] transition"
                         >
                             Shop Collection

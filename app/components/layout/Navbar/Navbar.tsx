@@ -39,7 +39,7 @@ export function Navbar() {
             </Link>
 
             <Link
-              href="/contact"
+              href="#contact-us"
               className="hover:text-[#ffae00] transition-colors"
             >
               CONTACT

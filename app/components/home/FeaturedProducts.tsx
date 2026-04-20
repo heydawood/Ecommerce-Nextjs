@@ -5,7 +5,7 @@ import { useAppDispatch } from "@/app/hooks/hooks";
 import { addToCart } from "@/app/redux/CartSlice/CartSlice";
 import { Product } from "@/app/Types/product";
 import Link from "next/link";
-import { toast } from "sonner";
+import { customToast } from "../common/ShowToast";
 
 const FeaturedProducts = () => {
   const dispatch = useAppDispatch();
@@ -22,7 +22,7 @@ const FeaturedProducts = () => {
   }
   
   return (
-    <div className="py-24">
+    <div id="shop" className="py-24">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Section Title */}
@@ -54,7 +54,7 @@ const FeaturedProducts = () => {
                 <button
                   onClick={() => {
                     dispatch(addToCart(product));
-                    toast(`${product.name} added to cart!`);
+                    customToast.success(`${product.name} added to cart!`);
                   }}
                   className="absolute bottom-0 left-0 w-full bg-gray-950 hover:bg-[#ffae00] text-white py-3 text-sm font-medium 
                   translate-y-full group-hover:translate-y-0 transition-transform duration-300"
