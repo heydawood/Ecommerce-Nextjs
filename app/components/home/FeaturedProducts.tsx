@@ -6,6 +6,7 @@ import { addToCart } from "@/app/redux/CartSlice/CartSlice";
 import { Product } from "@/app/Types/product";
 import Link from "next/link";
 import { customToast } from "../common/ShowToast";
+import Image from "next/image";
 
 const FeaturedProducts = () => {
   const dispatch = useAppDispatch();
@@ -43,7 +44,15 @@ const FeaturedProducts = () => {
               {/* Image */}
               <div className="overflow-hidden relative border rounded-sm">
                 <Link href={`/product/${product.id}`}>
-                  <img
+                  {/* <img
+                  
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-[350px] object-cover transition-transform duration-500 group-hover:scale-105"
+                  /> */}
+                  <Image
+                  height={350}
+                  width={350}
                     src={product.image}
                     alt={product.name}
                     className="w-full h-[350px] object-cover transition-transform duration-500 group-hover:scale-105"

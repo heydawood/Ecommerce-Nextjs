@@ -4,6 +4,8 @@ import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import file from '@/public/file.svg'
 import { useAppSelector } from "@/app/hooks/hooks";
+import Image from "next/image";
+import LogoImage from '@/public/logo.webp';
 
 
 export function Navbar() {
@@ -19,7 +21,7 @@ export function Navbar() {
           
           <Link href="/" className="text-xl text-[#ffae00] font-semibold tracking-wide">
             
-            <img src={file} alt="Furnish Logo" className="object-contain h-6" />
+            <Image src={LogoImage} alt="Furnish Logo" className="object-contain h-6" />
           </Link>
 
           

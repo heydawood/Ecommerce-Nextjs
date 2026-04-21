@@ -10,12 +10,16 @@ import { usePathname, useRouter } from 'next/navigation';
 import { usePage } from '@/app/Providers/PageProvider';
 import { useAppDispatch, useAppSelector } from '@/app/hooks/hooks';
 import { useCustomAlert } from '../../common/CustomAlert';
+import Image from 'next/image';
+import LogoImage from '@/public/logo.webp';
 
 const Logo = () => {
   return (
     <div className="flex gap-2 w-full py-1 items-center justify-start">
-      <img src="/images/logo22.png" alt="Furnish logo" className="h-[44px] object-cover" />
-      <h2 className="font-bold text-primary-dark">Furnish</h2>
+      <Link href="/" >
+      <Image width={70} height={70} src={LogoImage} alt="Furnish logo" className=" object-cover" />
+      </Link>
+      <h2 className="font-bold text-primary-dark">Admin Portal</h2>
     </div>
   );
 };
@@ -71,7 +75,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title} className="group/item">
                   <SidebarMenuButton
                     isActive={pathName.includes(item.link)}
-                    className={`flex items-center text-muted-dark h-[50px] px-4 py-0 rounded-xl ${pathName.includes(item.link) ? 'hover:bg-sidebar-accent' : ''}`}
+                    className={`flex items-center text-muted-dark h-[50px] px-4 py-0 rounded-xl ${pathName.includes(item.link) ? 'hover:bg-sidebar-accent' : 'hover:bg-sidebar-accent/50'}`}
                     asChild
                   >
                     <Link className="py-5 flex items-center" href={item.link}>

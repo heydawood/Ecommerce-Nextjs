@@ -1,4 +1,5 @@
 import { PageName } from "@/app/Utils/Constants";
+import { INavItem } from "@/app/Utils/Sidebar";
 
 
 export const navItems: INavItem[] = [
@@ -11,68 +12,37 @@ export const navItems: INavItem[] = [
     pageName: PageName.ORDERS,
   },
   {
-    title: 'Add Products',
-    link: '/addProducts',
-    icon: '/icons/teacher.svg',
-    iconActive: '/icons/teacher-active.svg',
-    pageName: PageName.ADD_PRODUCTS,
-  },
-  {
     title: 'All Products',
     link: '/allProducts',
     icon: '/icons/student.svg',
     iconActive: '/icons/student-active.svg',
     pageName: PageName.ALL_PRODUCTS,
   },
-
+  {
+    title: 'Add Products',
+    link: '/addProducts',
+    icon: '/icons/teacher.svg',
+    iconActive: '/icons/teacher-active.svg',
+    pageName: PageName.ADD_PRODUCTS,
+  },
 
 ];
 
 export const ApplicationPages = {
 
-  settings: {
-    title: 'Settings',
-    description: 'Here you can see all of the settings of platform.',
+  orders: {
+    title: 'Orders',
+    description: 'Here you can see all of the Orders.',
   },
   
-  admins: {
-    title: 'Admins Page',
-    description: 'Here you can manage and see details of all Admins.',
+  allProducts: {
+    title: 'All Products',
+    description: 'Here you can manage and see details of All Products.',
   },
-  teachers: {
-    title: 'Teachers Page',
-    description: 'Here you can manage and see details of all Teachers.',
+
+  addProducts: {
+    title: 'Add Products',
+    description: 'Here you can manage and Add Products.',
   },
-  students: {
-    title: 'Students Page',
-    description: 'Here you can manage and see details of all Students.',
-  },
-  academicYears: {
-    title: 'Academic Years Page',
-    description: 'Here you can manage and see details of all Academic Years.',
-  },
-  academicTerms: {
-    title: 'Academic Terms Page',
-    description: 'Here you can manage and see details of all Academic Terms.',
-  },
-  classLevels: {
-    title: 'Class Levels Page',
-    description: 'Here you can manage and see details of all Class Levels.',
-  },
-  programs: {
-    title: 'Programs Page',
-    description: 'Here you can manage and see details of all Programs.',
-  },
-  subjects: {
-    title: 'Subjects Page',
-    description: 'Here you can manage and see details of all Subjects.',
-  },
-  yearGroups: {
-    title: 'Year Groups Page',
-    description: 'Here you can manage and see details of all Year Groups.',
-  },
-  results: {
-    title: 'Results Page',
-    description: 'Here you can manage and see details of all Results.',
-  },
+
 };

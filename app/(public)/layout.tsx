@@ -6,7 +6,6 @@ import { Navbar } from '../components/layout/Navbar/Navbar';
 import { Provider } from 'react-redux';
 import { store } from '../redux/Store';
 import ContactUs from '../components/home/ContactUs';
-import { AlertDialogProvider } from '../components/common/CustomAlert';
 
 const layout = ({children}: { children: React.ReactNode; role: string | null; }) => {
   return (

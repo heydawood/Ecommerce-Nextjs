@@ -24,7 +24,7 @@ export default function AboutPage() {
                 to homes across the country.
               </p>
               <Link
-                href="/shop"
+                href="/#shop"
                 className="inline-block px-8 py-4 bg-[#ffae00] text-[#282828] font-bold rounded-lg hover:bg-yellow-500 transition-all duration-300 text-lg"
               >
                 Shop Our Collection

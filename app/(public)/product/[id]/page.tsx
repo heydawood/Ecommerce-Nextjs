@@ -4,10 +4,9 @@ import ProductData from "../ProductData";
 
 
 interface Props {
-    params: {
-        id: string;
-    };
+    params: Promise<{ id: string }>
 }
+
 
 export default async function ProductPage({ params }: Props) {
     
@@ -15,8 +14,8 @@ export default async function ProductPage({ params }: Props) {
     const product: Product = await getProductById(resolvedParams.id);
     
     return (
-
+        
         <ProductData product={product}/>
-
+        
     );
 }

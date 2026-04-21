@@ -19,8 +19,6 @@ export default function Cart() {
     (sum, item) => sum + Number(item.price) * item.quantity, 
     0
   );
-
-  //const navigate = useNavigate();
   
   
   const handleBuyNow = async () =>{
@@ -29,8 +27,6 @@ export default function Cart() {
     const newOrder:Order = {
       items: cartItems,
       totalAmount: total,
-      //status: "pending",
-      //createdAt: new Date().toISOString(), //converts time to UTC format
     };
     
     try {
@@ -41,7 +37,6 @@ export default function Cart() {
 
       dispatch(clearCart());
 
-      //navigate("/");
       router.push("/");
 
     } catch (error) {
@@ -86,7 +81,7 @@ export default function Cart() {
           
           <div className="flex justify-between items-center pt-4">
             <p className="font-bold">Total</p>
-            <p className="font-bold">${total}</p>
+            <p className="font-bold">${total.toFixed(2)}</p>
           </div>
 
         </CardContent>
