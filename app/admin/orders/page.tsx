@@ -1,18 +1,31 @@
-'use client';
+//'use client';
 
 import { Button } from '@/components/ui/button';
 import SVG from 'react-inlinesvg';
 import OrdersTable from '@/app/components/features/Order/OrderTable';
 import { useAdminManager } from '../adminManager';
 import Header from '@/app/components/admin/Header';
+import { getOrders } from '@/app/services/Orders/Orders';
+import { getQueryClient } from '@/lib/queryClient';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+import AllOrdersClient from './AllOrdersClient';
 
 
 
 
-export default function OrdersPage() {
+export default async function OrdersPage() {
 
-  const {getOrdersQuery} = useAdminManager();
-  const { data = [], isLoading } = getOrdersQuery();
+  // const {getOrdersQuery} = useAdminManager();
+  // const { data = [], isLoading } = getOrdersQuery();
+
+
+  //new
+const queryClient = getQueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ['orders'],
+    queryFn: getOrders,
+  });
+
 
   return (
     <div className="space-y-4">
@@ -28,7 +41,13 @@ export default function OrdersPage() {
           // }
         />
 
-        <OrdersTable data={data} loading={isLoading} />
+
+        {/* <OrdersTable data={data} loading={isLoading} /> */}
+
+        <HydrationBoundary state={dehydrate(queryClient)}>
+          <AllOrdersClient />
+        </HydrationBoundary>
+
       </div>
     </div>
   );
