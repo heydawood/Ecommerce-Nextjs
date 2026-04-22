@@ -49,7 +49,7 @@ export default function OrdersTable({
             title: 'Order ID',
             dataIndex: 'id',
             key: 'id',
-            sorter: (a: Order, b: Order) => (a.id || '').localeCompare(b.id || ''),
+            sorter: (a: Order, b: Order) => Number(a.id) - Number(b.id),
 
             render: (_: any, record: Order) => (
                 <div className="flex items-center">
@@ -89,7 +89,7 @@ export default function OrdersTable({
 
             render: (_: any, record: Order) => (
                 <div className="flex items-center">
-                    <span className="text-paragraph overflow-hidden">${record.totalAmount}</span>
+                    <span className="text-paragraph overflow-hidden">${record.totalAmount.toFixed(2)}</span>
                 </div>
             ),
         },

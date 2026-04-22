@@ -19,7 +19,7 @@ export default function AllProductsTable({
             title: 'Order ID',
             dataIndex: 'id',
             key: 'id',
-            sorter: (a: Product, b: Product) => (a.id || '').localeCompare(b.id || ''),
+            sorter: (a: Product, b: Product) => Number(a.id) - Number(b.id),
 
             render: (_: any, record: Product) => (
                 <div className="flex items-center">
