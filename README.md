@@ -93,19 +93,21 @@ order.ts
 ```bash
 git clone https://github.com/your-username/your-repo.git
 cd your-repo
+```
 
 
 2. Install dependencies
-
+```bash
 npm install
-
+```
 3. Run development server
-
+```bash
 npm run dev
-
+```
 4. Open in browser
-
+```bash
 http://localhost:3000
+```
 
 
 🔑 Admin Login (Mock)
