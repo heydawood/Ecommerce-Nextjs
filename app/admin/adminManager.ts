@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { getProducts } from '../services/Products/Products';
 import { getOrders } from '../services/Orders/Orders';
