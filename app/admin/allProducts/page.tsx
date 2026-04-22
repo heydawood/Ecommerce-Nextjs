@@ -1,16 +1,27 @@
-'use client';
+
 
 import { Button } from '@/components/ui/button';
 import SVG from 'react-inlinesvg';
 import { useAdminManager } from '../adminManager';
 import Header from '@/app/components/admin/Header';
 import AllProductsTable from '@/app/components/features/AllProducts/AllProductsTable';
+import { getQueryClient } from '@/lib/queryClient';
+import { getProducts } from '@/app/services/Products/Products';
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+import AllProductsClient from './AllProductsClient';
 
 
-export default function AllProductsPage() {
+export default async function AllProductsPage() {
 
-  const {getProductsQuery} = useAdminManager();
-  const { data = [], isLoading } = getProductsQuery();
+  // const {getProductsQuery} = useAdminManager();
+  // const { data = [], isLoading } = getProductsQuery();
+
+  //new
+const queryClient = getQueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ['products'],
+    queryFn: getProducts,
+  });
 
   return (
     <div className="space-y-4">
@@ -26,7 +37,12 @@ export default function AllProductsPage() {
           // }
         />
 
-        <AllProductsTable data={data} loading={isLoading} />
+        <HydrationBoundary state={dehydrate(queryClient)}>
+          <AllProductsClient />
+        </HydrationBoundary>
+
+        {/* <AllProductsTable data={data} loading={isLoading} /> */}
+
       </div>
     </div>
   );

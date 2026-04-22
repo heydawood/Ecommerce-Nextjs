@@ -7,20 +7,32 @@ import { Product } from "@/app/Types/product";
 import Link from "next/link";
 import { customToast } from "../common/ShowToast";
 import Image from "next/image";
+import { getProducts } from "@/app/services/Products/Products";
+import { useQuery } from "@tanstack/react-query";
 
 const FeaturedProducts = () => {
   const dispatch = useAppDispatch();
   
-  const {getProductsQuery} = usePublicManager();
-  const { data: products, isLoading, isError } = getProductsQuery();
+  // const {getProductsQuery} = usePublicManager();
+  // const { data: products, isLoading, isError } = getProductsQuery();
   
-  if (isLoading) {
-    return <div className="text-center py-10">Loading products...</div>;
-  }
+  // if (isLoading) {
+  //   return <div className="text-center py-10">Loading products...</div>;
+  // }
 
-  if (isError || !products) {
-    return <div className="text-red-500 text-center py-10">Failed to load products</div>;
-  }
+  // if (isError || !products) {
+  //   return <div className="text-red-500 text-center py-10">Failed to load products</div>;
+  // }
+
+  //new
+  const { data : products , isLoading, isError } = useQuery({
+    queryKey: ['products'],
+    queryFn: getProducts,
+  });
+
+  if (isLoading) return <p>Loading...</p>; // won't flash now
+  if (isError) return <p>Error</p>;
+
   
   return (
     <div id="shop" className="py-24">
