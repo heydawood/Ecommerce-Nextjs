@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { store } from '../redux/Store';
 import ContactUs from '../components/home/ContactUs';
 
-const layout = ({children}: { children: React.ReactNode; role: string | null; }) => {
+const layout = ({children}: { children: React.ReactNode}) => {
   return (
     <>
     
