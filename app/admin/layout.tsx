@@ -10,7 +10,7 @@ import Header from '../components/layout/Header/Header';
   description: 'Furnish Admin Portal.',
 };
 
-const layout = ({ children }: { children: React.ReactNode; role: string | null; }) => {
+const layout = ({ children }: { children: React.ReactNode}) => {
 
 
 
