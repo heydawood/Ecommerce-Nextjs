@@ -1,8 +1,9 @@
 'use client'
+import { StaticImageData } from 'next/image';
 import React, { useState } from 'react'
 
 type Slide = {
-  url: string;
+  url: string | StaticImageData;
   title: string;
 };
 

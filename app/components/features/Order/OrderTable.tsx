@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Table from '@/components/ui/table/Table';
 import { Order } from '@/app/Types/order';
@@ -50,7 +49,7 @@ export default function OrdersTable({
             title: 'Order ID',
             dataIndex: 'id',
             key: 'id',
-            sorter: (a: Order, b: Order) => a.id! - b.id!,
+            sorter: (a: Order, b: Order) => (a.id || '').localeCompare(b.id || ''),
 
             render: (_: any, record: Order) => (
                 <div className="flex items-center">
@@ -127,6 +126,8 @@ export default function OrdersTable({
 
         {
             title: 'Actions',
+            dataIndex: 'id',
+            key: 'action',
             render: (_: any, record: Order) => (
                 <DropdownMenu >
                     <DropdownMenuTrigger  asChild>
