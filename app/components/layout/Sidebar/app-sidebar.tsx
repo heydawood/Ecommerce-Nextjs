@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from '@/app/hooks/hooks';
 import { useCustomAlert } from '../../common/CustomAlert';
 import Image from 'next/image';
 import LogoImage from '@/public/logo.webp';
+import { logoutAction } from '@/app/actions/authActions';
 
 const Logo = () => {
   return (
@@ -32,7 +33,7 @@ export function AppSidebar() {
   const showAlert = useCustomAlert();
   const { pageInfo, setPageInfo } = usePage();
 
-  const logout = () => {
+  const logout =  () => {
     showAlert({
       title: 'Logout',
       description: 'Are you sure you want to logout?',
@@ -41,9 +42,8 @@ export function AppSidebar() {
       //customLogo: <Icon icon="/icons/logout.svg" />,
       logoClasses: 'bg-error-100 text-error',
       onConfirm: () => {
-        //dispatch(removeToken()); //coming from the admin auth slice
-        //navigate(routes.Login());
-        router.push(routes.Login());
+         logoutAction();
+         router.push('/login');
       },
       classNames: {
         confirmButton: 'hover:bg-error bg-error-25 text-error-800 hover:text-white rounded-xl',
